@@ -135,11 +135,12 @@ def twine2svg(twine)
     end
 
     xml.svg(
-        'xmlns' => 'http://www.w3.org/2000/svg',
-        'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
-        :width => twine.extentX + 110,
-        :height => twine.extentY + 110,
-        :viewbox => "0 0 #{twine.extentX + 110} #{twine.extentY + 110}") {
+      'xmlns' => 'http://www.w3.org/2000/svg',
+      'xmlns:xlink' => 'http://www.w3.org/1999/xlink',
+      :width => twine.extentX + 110,
+      :height => twine.extentY + 110,
+      :viewbox => "0 0 #{twine.extentX + 110} #{twine.extentY + 110}"
+    ) {
 
       # Comment about generator
       xml << "<!-- Genereated with twine2svg #{$VERSION} -->"
@@ -159,19 +160,19 @@ def twine2svg(twine)
         twine.passages.each do |passage|
           xml.g(:class => "passage#{passage.start ? ' start': ''}") {
             xml.title passage.name
-            xml.rect(
-                :x => passage.x + 4,
-                :y => passage.y + 4,
-                :width => 100, :height => 100)
+            xml.rect(:x => passage.x + 4,
+                     :y => passage.y + 4,
+                     :width => 100, :height => 100)
 
             # Write the title of the passage if requested
             if $options[:title]
               fakewrap(passage.name, 10, 5).each_with_index do |word, i|
                 xml.text_(
-                    :x => passage.x + 54,
-                    :y => passage.y + 5 + 16 * i,
-                    'text-anchor' => 'middle',
-                    'alignment-baseline' => 'before-edge') {
+                  :x => passage.x + 54,
+                  :y => passage.y + 5 + 16 * i,
+                  'text-anchor' => 'middle',
+                  'alignment-baseline' => 'before-edge'
+                ) {
                   xml.text word
                 }
               end
@@ -180,10 +181,11 @@ def twine2svg(twine)
             # Write the ID of the passage if requested
             if $options[:ids]
               xml.text_(
-                  :x => passage.x + 10,
-                  :y => passage.y + 10,
-                  'text-anchor' => 'start',
-                  'alignment-baseline' => 'before-edge') {
+                :x => passage.x + 10,
+                :y => passage.y + 10,
+                'text-anchor' => 'start',
+                'alignment-baseline' => 'before-edge'
+              ) {
                 xml.text passage.id
               }
             end
