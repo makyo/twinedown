@@ -3,19 +3,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1710" height="1310" viewbox="0 0 1710 1310">
   <!-- Genereated with twine2svg 0.0.2 -->
   <style>  .twine .passage rect {
-    fill: transparent;
-    stroke: currentColor;
+    fill: white;
+    stroke: black;
     stroke-width: 2px;
   }
   .twine .passage.start rect {
     stroke-width: 4px;
   }
   .twine .link {
-    stroke: currentColor;
+    stroke: black;
     stroke-width: 2px;
   }
   .twine text {
-    fill: currentColor;
+    fill: black;
   }
 </style>
   <g class="twine">
