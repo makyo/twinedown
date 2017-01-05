@@ -13,6 +13,11 @@ Link = Struct.new('Link', :from, :to, :text, :type) do |link|
     "\"#{text}\": #{from} -> #{to} (#{type})"
   end
 
+  ##
+  # Finds the closest pair of connector points (cardinal points and corners)
+  # between the two passages represented in this link. Uses a tolerance to try
+  # and avoid two corners being the 'closest' points when services are parallel.
+  
   def endpoints
     connectors = {
       :NW => [2, 2],
