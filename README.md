@@ -24,7 +24,7 @@ Tested on Harlowe formatted games, not yet any others.
 
 Example:
 
-![Twine SVG](/example.svg?raw=true)
+[![Twine SVG](/example.png?raw=true)](/example.svg)
 
 ### Wishlist
 
