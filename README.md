@@ -24,7 +24,7 @@ Tested on Harlowe formatted games, not yet any others.
 
 Example:
 
-![Twine SVG](/makyo/twinedown/blob/endpoints/example.svg?raw=true)
+![Twine SVG](/example.svg?raw=true)
 
 ### Wishlist
 
