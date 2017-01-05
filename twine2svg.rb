@@ -6,7 +6,7 @@ require 'rubygems'
 
 require './twine.rb'
 
-$VERSION = '0.0.1'
+$VERSION = '0.0.2'
 
 $options = {
   :title => false,
@@ -21,7 +21,7 @@ $options = {
 # Builds $options from command line options
 
 OptionParser.new do |opts|
-  opts.banner = "#{$0} #{$VERSION}- convert a twine file to an SVG map"
+  opts.banner = "#{$0} #{$VERSION} - convert a twine file to an SVG map"
   opts.separator ''
   opts.separator "Usage: #{$0} [options] twine_file\n\n"
 
@@ -116,10 +116,11 @@ def twine2svg(twine)
 
   # For each link, generate a line for the path specification
   path_contents = twine.links.inject([]) do |memo, link|
-    fromX = link.from.x + 54
-    fromY = link.from.y + 54
-    toX = link.to.x + 54
-    toY = link.to.y + 54
+    from, to = link.endpoints
+    fromX = from[0] + 4
+    fromY = from[1] + 4
+    toX = to[0] + 4
+    toY = to[1] + 4
     memo << "M#{fromX} #{fromY} L #{toX} #{toY}"
   end
 
@@ -162,6 +163,8 @@ def twine2svg(twine)
             xml.title passage.name
             xml.rect(:x => passage.x + 4,
                      :y => passage.y + 4,
+                     :rx => 5,
+                     :ry => 5,
                      :width => 100, :height => 100)
 
             # Write the title of the passage if requested

@@ -3,6 +3,7 @@
 require 'nokogiri'
 require 'rubygems'
 require 'yaml'
+require 'byebug'
 
 
 ##
@@ -11,6 +12,33 @@ require 'yaml'
 Link = Struct.new('Link', :from, :to, :text, :type) do |link|
   def to_s
     "\"#{text}\": #{from} -> #{to} (#{type})"
+  end
+
+  def endpoints
+    connectors = {
+      :NW => [2, 2],
+      :SE => [98, 98],
+      :NE => [98, 2],
+      :SW => [2, 98],
+      :N => [50, 0],
+      :S => [50, 100],
+      :E => [100, 50],
+      :W => [0, 50]
+    }
+    shortest_path = 1000000
+    generated_endpoints = []
+    connectors.each do |from_key, from_connector|
+      ep_from = [from.x + from_connector[0], from.y + from_connector[1]]
+      connectors.each do |to_key, to_connector|
+        ep_to = [to.x + to_connector[0], to.y + to_connector[1]]
+        path = Math.sqrt(((ep_from[0] - ep_to[0]).abs ** 2) + ((ep_from[1] - ep_to[1]).abs ** 2)).to_i
+        if path < shortest_path + 25
+          shortest_path = path
+          generated_endpoints = [ep_from, ep_to]
+        end
+      end
+    end
+    return generated_endpoints
   end
 end
 
