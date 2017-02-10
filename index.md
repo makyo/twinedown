@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Twinedown
+gh_user: makyo
+gh_repo: twinedown
 ---
 
 Some Twine2 tools
